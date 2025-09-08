@@ -1,0 +1,413 @@
+
+#include <stdio.h>
+
+void busprint(){
+	            printf("1. Ampara\t\t2. Angoda\t\t3. Angulana\t\t4. Anuradhapura\t\t5. Avissawella\n6. Badulla\t\t7. Bandarawela\t\t8. Batticaloa\t\t9. Chilaw\t\t10. Colombo\n11. Dehiaththakandiya\t12. Galle\t\t13. Gampaha\t\t14. Hambantota\t\t15. Hatton\n16. Homagama\t\t17. Horana\t\t18. Ja-ela\t\t19. Jaffna\t\t20. Kadawatha\n21. Kandy\t\t22. Katharagama\t\t23. Katubedda\t\t24. Katharagama\t\t25. Kadawatha\n26. Kiribathgoda\t27. Maharagama\t\t28. Mahiyanganaya\t29. Mannar\t\t30. Matale\n31. Matara\t\t32. Mawanella\t\t33. Moratuwa\t\t34. Mullaitivu\t\t35. Negombo\n36. Nittambuwa\t\t37. Nuwara Eliya\t38. Panadura\t\t39. Polonnaruwa\t\t40. Puttalam\n41. Rabukkana\t\t42. Rathmalana\t\t43. Trincomalee\t\t44. Vavuniya\t\t45. Wellawaya\n46. Kegalle\t\t47. Kelaniya\t\t48. Kilinochchi\t\t49. Monaragala\t\t50. Ratnapura");
+}
+void trainprint(){
+				printf("1. Ahangama\t\t 2. Aluthgama\t\t 3. Ambalangoda\t\t 4. Ambewela\t\t 5. Anuradhapura\n6. Avissawella\t\t 7. Badulla\t\t 8. Bandarawela\t\t 9. Batticaloa\t\t 10. Bentota\n11. Colombo Fort\t 12. Colombo Maradana\t 13. Colombo Slave Island14. Dehiwala\t\t 15. Demodara\n16. Ella\t\t 17. Galle\t\t 18. Gampaha\t\t 19. Gampola\t\t 20. Haldummulla\n21. Haputale\t\t 22. Hatton\t\t 23. Hikkaduwa\t\t 24. Jaffna\t\t 25. Kadugannawa\n26. Kalutara South\t 27. Kandy\t\t 28. Kosgama\t\t 29. Kurunegala\t\t 30. Mahawa\n31. Mannar\t\t 32. Matara\t\t 33. Moratuwa\t\t 34. Mount Lavinia\t 35. Nawalapitiya\n36. Nawinna\t\t 37. Negombo\t\t 38. Panadura\t\t 39. Peradeniya\t\t 40. Polgahawela\n41. Polonnaruwa\t\t 42. Rambukkana\t\t 43. Ragama\t\t 44. Talaimannar\t 45. Thalawakale\n46. Trincomalee\t\t 47. Vavuniya\t\t 48. Weligama");	
+}
+int main()
+{
+    
+    int input1,input2,input3,input4,input5,input6;
+    int bussearchroute,bussearchstart,bussearchend,bussearchstarttime,bussearchendtime;
+    int trainsearchstart,trainsearchend,trainsearchstarttime,trainsearchendtime;
+    int bookbusno,bookbussheets,booktrainno,booktrainsheets;
+    int loop=1;
+    int loop1=0;
+    int loop2=1;
+    int loop3=0;
+    int busno =0;
+    int businfo[10][5] ={0};
+    int trainno=0;
+    int traininfo[10][4] ={0};
+    int busdetails[10];
+    int traindetails[10];
+    int n=0;
+    int m=0;
+    int number_of_buses;
+    int floop=1;
+    int a=0;
+    
+    printf("*********Welcome to online transportation file system**************\n\n ");
+    
+	do{
+    
+    FILE *fptr;
+    fptr = fopen("C:\\Users\\DELL USER\\Desktop\\Project COSC\\save files\\bus.txt","w+");
+    fprintf(fptr,"**********Bus file system**********\n\n");
+    fprintf(fptr,"\n\nBus route Number\tBus start location\tBus end location\tBus start time\tBus end time\n");
+    
+    FILE *fptr1;
+    fptr1 = fopen("C:\\Users\\DELL USER\\Desktop\\Project COSC\\save files\\train.txt","w+");
+    fprintf(fptr1,"**********Train file system**********\n\n");
+    fprintf(fptr1,"\n\nTrain start location\tTrain end location\tTrain start time\tTrain end time\n");
+    
+    FILE *fptr2;
+    fptr2 = fopen("C:\\Users\\DELL USER\\Desktop\\Project COSC\\save files\\busbooking.txt","w+");
+    fprintf(fptr2,"**********Bus Booking file system**********\n\n");
+    fprintf(fptr2,"\n\nBus route Number\tBus start location\tBus end location\tBus start time\tBus end time\tBooked sheets\n");
+    
+    FILE *fptr3;
+    fptr3 = fopen("C:\\Users\\DELL USER\\Desktop\\Project COSC\\save files\\trainbooking.txt","w+");
+    fprintf(fptr3,"**********Train Booking file system**********\n\n");
+    fprintf(fptr3,"\n\nTrain start location\tTrain end location\tTrain start time\tTrain end time\tBooked sheets\n");
+    
+    printf("Do you want to enter data, read data or make a booking?\n\n ");
+    printf("\tIf you want to enter data press 1\n\tIf you want to read data press 2\n\tIf you want to make a booking press 3\n ");
+    scanf("%d",&input1);
+    
+        if (input1==1){
+        
+            printf("Do you want to enter data to bus file system or train file system?\n\n");
+            printf("\tIf you want bus file system enter 1\n");
+            printf("\tIf you want train file system enter 2\n");
+            scanf("%d",&input2);
+        
+                
+            if (input2==1){
+                    
+                do{
+                
+                printf("Entering to the bus file system...\n\n "); 
+                printf("Enter following details\n");
+                
+                printf("What is the bus route number: ");
+                scanf("%d",&businfo[busno][0]);
+                
+                printf("Bus Stand Numbers:\n");
+				busprint();
+                printf("\n\nBus from where to where: ");
+                printf("\n\n\tLocation 1: ");
+                scanf("%d",&businfo[busno][1]);
+                printf("\n\tLocation 2: ");
+                scanf("%d",&businfo[busno][2]);
+                
+                
+                printf("\nWhat is the time when bus is in location 1 and location 2: ");
+                printf("\n\n\tPlease enter the time in 24 hour format\n\t***example:If it is 3.20 am, enter 0320***");
+                printf("\n\n\tTime when bus is in location 1: ");
+                scanf("%d",&businfo[busno][3]);
+                printf("\n\tTime when bus is in location 2: ");
+                scanf("%d",&businfo[busno][4]);
+                
+                fprintf(fptr,"%d\t\t\t%d\t\t\t%d\t\t\t%d\t\t\t%d\n",businfo[busno][0],businfo[busno][1],businfo[busno][2],businfo[busno][3],businfo[busno][4]); 
+              
+            	
+                do{
+                
+                
+                printf("\nDo you want to enter data again?\n");
+                printf("\tIf yes enter 1\n");
+                printf("\tIf no enter 2\n");
+                scanf("%d",&input4);
+                
+                if (input4==1){
+                busno=busno+1;
+                loop=1;
+                loop1=0;
+                }
+                else if(input4==2){
+                loop=0;
+                loop1=0;
+                }
+                else{
+                printf("\nInvalid input.");
+                loop1=1;
+                }
+                }
+                while(loop1==1);
+                  
+                }
+                while(loop==1);  
+                
+                printf("\nDo you want another service?\n");
+                printf("\tIf yes enter 1\n");
+                printf("\tIf no enter 2\n");
+                scanf("%d",&floop);
+            }
+                
+                
+            else if (input2==2){
+                
+                do{    
+                printf("Entering to the train file system...\n ");
+                
+                printf("Enter following details\n");
+                
+                printf("Train station Numbers:\n");
+                trainprint();
+                printf("\n\nTrain from where to where: ");
+                printf("\n\n\tLocation 1: ");
+                scanf("%d",&traininfo[trainno][0]);
+                printf("\n\tLocation 2: ");
+                scanf("%d",&traininfo[trainno][1]);
+                
+                
+                printf("\nWhat is the time when train is in location 1 and location 2: ");
+                printf("\n\n\tPlease enter the time in 24 hour format\n\t***example:If it is 3.20 am, enter 0320***");
+                printf("\n\n\tTime when train is in location 1: ");
+                scanf("%d",&traininfo[trainno][2]);
+                printf("\n\tTime when train is in location 1: ");
+                scanf("%d",&traininfo[trainno][3]);
+                
+                fprintf(fptr1,"%d\t\t\t%d\\t\tt%d\t\t\t%d\n",traininfo[trainno][0],traininfo[trainno][1],traininfo[trainno][2],traininfo[trainno][3]); 
+                
+                do{
+                
+                
+                printf("\nDo you want to enter data again?\n");
+                printf("\tIf yes enter 1\n");
+                printf("\tIf no enter 2\n");
+                scanf("%d",&input5);
+                
+                if (input5==1){
+                trainno=trainno+1;
+                loop2=1;
+                loop3=0;
+                }
+                else if(input5==2){
+                loop2=0;
+                loop3=0;
+                }
+                else{
+                printf("\nInvalid input.");
+                loop3=1;
+                }
+                }
+                while(loop3==1);
+                  
+                }
+                while(loop2==1);  
+                
+                printf("\nDo you want another service?\n");
+                printf("\tIf yes enter 1\n");
+                printf("\tIf no enter 2\n");
+                scanf("%d",&floop);
+            }
+                
+                
+        
+            else{
+                printf("\nInvalid input.");
+            }
+        
+        }
+    
+        else if (input1==2){
+        
+            printf("Do you want to read data from bus file system or train file system?\n\n");
+            printf("\tIf you want bus file system enter 1\n");
+            printf("\tIf you want train file system enter 2\n");
+            scanf("%d",&input3);
+     
+            if (input3==1){
+	            printf("\tEntering to the bus file system...\n\n ");
+	            printf("\tEnter any of the following details you know...\n\tIf you dont know any of the below details plese enter 0 and press enter\n");
+	                
+	            printf("\nWhat is the bus route number: ");
+	            scanf("%d",&bussearchroute);
+	            
+	            printf("Bus Stand Numbers:\n");
+				busprint();
+	            
+				printf("\n\nWhere does the bus start from: ");
+	            scanf("%d",&bussearchstart);
+	            
+	            printf("\nWhere does the bus end from: ");
+	            scanf("%d",&bussearchend);
+	            
+	            printf("\n\n\tPlease enter the time in 24 hour format\n\t***example:If it is 3.20 am, enter 0320***");
+	            
+	            printf("\nWhat is the time when bus start the trip: ");
+	            scanf("%d",&bussearchstarttime);
+	            
+	            printf("\nWhat is the time when bus end the trip: ");
+	            scanf("%d",&bussearchendtime);
+	            
+	            
+	            for (int i = 0; i < busno+1; i++) {
+	            if (businfo[i][0] != 0){   
+	            if (businfo[i][0] == bussearchroute) {
+	            busdetails[n]=i;
+	            n=n+1;
+	            }}}
+	            
+	            for (int i = 0; i < busno+1; i++) {
+	            if (businfo[i][1] != 0){   
+	            if (businfo[i][1] == bussearchstart) {
+	            busdetails[n]=i;
+	            n=n+1;
+	            }}}
+	            
+	            for (int i = 0; i < busno+1; i++) {
+	            if (businfo[i][2] != 0){   
+	            if (businfo[i][2] == bussearchend) {
+	            busdetails[n]=i;
+	            n=n+1;
+	            }}}
+	            
+	            for (int i = 0; i < busno; i++) {
+	            if (businfo[i][3] != 0){   
+	            if (businfo[i][3] == bussearchstarttime) {
+	            busdetails[n]=i;
+	            n=n+1;
+	            }}}
+	            
+	            for (int i = 0; i < busno+1; i++) {
+	            if (businfo[i][4] != 0){
+	            if (businfo[i][4] == bussearchendtime) {
+	            busdetails[n]=i;
+	            n=n+1;
+	            }}}
+	            
+	            for (int i = 0; i < n; i++) {
+	            for (int j = i + 1; j < n; j++) {
+	                if (busdetails[i] == busdetails[j]) {
+	                for (int k = j; k < n - 1; k++) {
+	                busdetails[k] = busdetails[k + 1];
+	                }
+	                n--;
+	                j--; 
+	                }
+	            }
+	            }
+	            for (int a=0; a< n; a++) {
+	            int z = busdetails[a];
+	            printf("\t%d\t\t%d\t\t\t%d\t\t\t%d\t\t\t%d\n",businfo[z][0],businfo[z][1],businfo[z][2],businfo[z][3],businfo[z][4]);     
+	            }
+	            
+				
+			}
+            else if (input3==2){
+	            printf("Entering to the train file system...\n ");     
+	            
+	    		printf("\tEnter any of the following details you know...\n\tIf you dont know any of the below details plese enter 0 and press enter\n");
+	            
+	            printf("Trian Station Numbers:\n");
+	            trainprint();
+	            
+	            printf("\n\nWhere does the train start from: ");
+	            scanf("%d",&trainsearchstart);
+	            
+	            printf("\nWhere does the train end from: ");
+	            scanf("%d",&trainsearchend);
+	            
+	            printf("\n\n\tPlease enter the time in 24 hour format\n\t***example:If it is 3.20 am, enter 0320***");
+	            
+	            printf("\nWhat is the time when train start the trip: ");
+	            scanf("%d",&trainsearchstarttime);
+	            
+	            printf("\nWhat is the time when train end the trip: ");
+	            scanf("%d",&trainsearchendtime);
+	            
+	            
+	            for (int i = 0; i < trainno+1; i++) {
+	            if (traininfo[i][0] != 0){   
+	            if (traininfo[i][0] == trainsearchstart) {
+	            traindetails[m]=i;
+	            m=m+1;
+	            }}}
+	            
+	            for (int i = 0; i < trainno+1; i++) {
+	            if (traininfo[i][1] != 0){   
+	            if (traininfo[i][1] == trainsearchend) {
+	            traindetails[m]=i;
+	            m=m+1;
+	            }}}
+	            
+	            for (int i = 0; i < trainno+1; i++) {
+	            if (traininfo[i][2] != 0){   
+	            if (traininfo[i][2] == trainsearchstarttime) {
+	            traindetails[m]=i;
+	            m=m+1;
+	            }}}
+	            
+	            for (int i = 0; i < trainno+1; i++) {
+	            if (traininfo[i][3] != 0){   
+	            if (traininfo[i][3] == trainsearchendtime) {
+	            traindetails[m]=i;
+	            m=m+1;
+	            }}}
+	           
+	            
+	            for (int i = 0; i < m; i++) {
+	            for (int j = i + 1; j < m; j++) {
+	                if (traindetails[i] == traindetails[j]) {
+	                for (int k = j; k < m - 1; k++) {
+	                traindetails[k] = traindetails[k + 1];
+	                }
+	                m--;
+	                j--; 
+	                }
+	            }
+	            }
+	            printf("\n\nTrain start location\tTrain end location\tTrain start time\tTrain end time\n");
+	            for (int a=0; a< m; a++) {
+	            int y = traindetails[a];
+	            printf("\t%d\t\t\t%d\t\t\t%d\t\t\t%d\n",traininfo[y][0],traininfo[y][1],traininfo[y][2],traininfo[y][3]);     
+	            }
+			}
+            else{
+            	
+            }  
+            
+            printf("\nDo you want another service?\n");
+            printf("\tIf yes enter 1\n");
+            printf("\tIf no enter 2\n");
+            scanf("%d",&floop);
+        
+    	}
+    	else if (input1==3){
+    		
+			printf("Do you want to enter data to bus booking system or train booking system?\n\n");
+            printf("\tIf you want bus booking system enter 1\n");
+            printf("\tIf you want train booking system enter 2\n");
+            scanf("%d",&input6);	
+            
+            	if (input6==1){
+            		printf("\n\nBus route Number\tBus start location\tBus end location\tBus start time\tBus end time\n");
+            	    for(int busdata=0;busdata<=busno;busdata++){
+					printf("%d.\t%d\t\t\t%d\t\t%d\t\t\t%d\t\t\t%d\n",busdata+1,businfo[busdata][0],businfo[busdata][1],businfo[busdata][2],businfo[busdata][3],businfo[busdata][4]);  
+            	}
+            	printf("\nEnter the number witch you want to book:\n ");
+            	scanf("%d",&bookbusno);
+            	printf("\nEnter how many sheets do you want to book:\n ");
+            	scanf("%d",&bookbussheets);
+            	
+            	fprintf(fptr2,"%d\t\t\t%d\t\t\t%d\t\t\t%d\t\t\t%d \t\t- %d sheets\n",businfo[bookbusno-1][0],businfo[bookbusno-1][1],businfo[bookbusno-1][2],businfo[bookbusno-1][3],businfo[bookbusno-1][4],bookbussheets); 
+            	printf("\n\n***Booking is successful***\n\n");
+            	
+				}
+            	else if (input6==2){
+            		printf("\n\nTrain start location\tTrain end location\tTrain start time\tTrain end time\n");
+            		for(int traindata=0;traindata<=trainno;traindata++){
+            		printf("%d.\t%d\t\t\t%d\t\t\t%d\t\t\t%d\n",traindata+1,traininfo[traindata][0],traininfo[traindata][1],traininfo[traindata][2],traininfo[traindata][3]); 
+            	}
+            	printf("\nEnter the number witch you want to book:\n ");
+            	scanf("%d",&booktrainno);
+            	printf("\nEnter how many sheets do you want to book:\n ");
+            	scanf("%d",&booktrainsheets);
+            	
+            	fprintf(fptr3,"%d\t\t\t%d\t\t\t%d\t\t\t%d\t\t\t%d \t\t- %d sheets\n",traininfo[booktrainno-1][0],traininfo[booktrainno-1][1],traininfo[booktrainno-1][2],traininfo[booktrainno-1][3],traininfo[booktrainno+1][4],booktrainsheets); 
+            	printf("\n\n***Booking is successful***\n\n");
+				
+				}
+				else{
+                printf("\nInvalid input.");
+            	}
+            	 printf("\nDo you want another service?\n");
+                printf("\tIf yes enter 1\n");
+                printf("\tIf no enter 2\n");
+                scanf("%d",&floop);
+		}
+        else{
+        
+            printf("\nInvalid input.");
+        }
+    
+    }while(floop==1);
+
+    
+}
